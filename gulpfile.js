@@ -17,6 +17,9 @@ const browserify = require('gulp-browserify');
 // var source = require('vinyl-source-stream');
 
 const paths = {
+	src: "source",
+	dist: "dist",
+
 	styles: {
 		src: 'source/scss/**/*.scss',
 		css: 'source/css/',
@@ -66,7 +69,6 @@ gulp.task('tsk_html', function() {
 			collapseWhitespace: true				// minifikacja html
 		}))
 		.pipe(gulp.dest(paths.html.dest))
-		.pipe(browserSync.stream());
 });
 
 // konfiguracja preprocesora Sass + sourcemaps + autoprefixer
@@ -87,6 +89,13 @@ gulp.task('tsk_sass', function() {
 		.pipe(browserSync.stream());				// wstrzyknięcie zmian do przeglądarki
 
 		// gulp.run('tsk_css');
+});
+
+
+gulp.task('tsk_copy', function() {
+
+	return gulp.src('source/fonts').pipe(gulp.dest('dist/fonts')); // kopiowanie czcionek
+
 });
 
 // gulp.task('tsk_js', () =>
@@ -124,4 +133,4 @@ gulp.watch(paths.js.src, ['tsk_js']);
 gulp.watch(paths.styles.src, ['tsk_sass']);
 
 
-gulp.task('default', ['tsk_serve', 'tsk_sass', 'tsk_js']);				// 5. chcemy zeby naszym domyślnym zadaniem było zadanie o nazwie 'serve'
+gulp.task('default', ['tsk_serve', 'tsk_sass', 'tsk_js', 'tsk_copy']);				// 5. chcemy zeby naszym domyślnym zadaniem było zadanie o nazwie 'serve'
