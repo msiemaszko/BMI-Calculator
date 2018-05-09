@@ -61,3 +61,7 @@ typings/
 api-keys.txt
 curl.txt
 .sass-cache
+
+# Marek
+./dist
+./build
