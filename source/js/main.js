@@ -7,3 +7,4 @@ console.log(double(5)); //10
 
 const robotron = new Robot('Robotron');
 robotron.sayName(); //My name is Robotron
+ 

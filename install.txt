@@ -1,2 +1,22 @@
 npm install --save-dev gulp-babel babel-core babel-preset-env
 npm install --save-dev browserify
+
+
+wyciete z package:
+
+"babel": "babel src -d dist"
+
+oraz:
+,
+"browserify": {
+  "transform": [
+	[
+	  "babelify",
+	  {
+		"presets": [
+		  "env"
+		]
+	  }
+	]
+  ]
+}

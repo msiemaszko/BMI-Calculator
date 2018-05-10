@@ -12,7 +12,7 @@ class Robot {
   }
 
   sayName() {
-    console.log("Marek 1 " + this.name);
+    console.log("TEST: " + this.name);
   }
 }
 
