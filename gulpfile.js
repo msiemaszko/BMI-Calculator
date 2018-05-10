@@ -77,14 +77,17 @@ gulp.task('tsk_serve', function() {
 // });
 
 gulp.task('tsk_js', function () {
-	return browserify(paths.js.source_js)
-		.transform('babelify', {presets: ['env']})
+	return browserify(paths.js.source_js, {debug:true})
+		.transform('babelify', {
+			presets: ['env'],
+			sourceMaps: true
+		})
 		.bundle()
 		.pipe(source(paths.js.concat_js)) // Readable Stream -> Stream Of Vinyl Files
 		.pipe(buffer()) // Vinyl Files -> Buffered Vinyl Files
-		.pipe(sourcemaps.init())
-		.pipe(uglify())
-		.pipe(sourcemaps.write("."))
+		// .pipe(sourcemaps.init())
+		// .pipe(uglify())
+		// .pipe(sourcemaps.write("./"))
 		.pipe(gulp.dest(paths.js.dest))
 		.pipe(browserSync.stream());
 });
