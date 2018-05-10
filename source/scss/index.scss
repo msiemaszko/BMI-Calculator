@@ -1,14 +1,11 @@
-
-html {
-	background-color: blue;
-	color: green;
-
-	font-family: 'BubblegumSans';
-	font-family: Shrikhand;
-	font-size: 30px;
+* {
+	margin: 0px;
 }
 
 body {
+	color: green;
+	background-color: blue;
+
 	margin: 0 auto;
 	background-color: white;
 	display: flex;
@@ -26,6 +23,10 @@ body {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
 	grid-gap: 1em;
+
+	font-family: 'BubblegumSans';
+	font-family: Shrikhand;
+	font-size: 30px;
 }
 .box {
 background-color: white;
@@ -63,10 +64,11 @@ text-align: center;
 	position: absolute;
 	top: 50%;
 	transform-origin: 100%;
-		&:hover {
-	transform: rotate(90deg);
-	transition: all 5s;
 
-	transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-}
+		&:hover {
+			transform: rotate(90deg);
+			transition: all 5s;
+
+			transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+		}
 }

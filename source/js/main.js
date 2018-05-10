@@ -11,13 +11,17 @@ robotron.sayName(); //My name is Robotron
 
  // ===============================
 
- const input_weight = document.querySelector('.weight');
- const input_height = document.querySelector('.height');
- const guzik = document.querySelector('.guzik');
+ const waga = document.querySelector('#weight_input');
+ const wzrost = document.querySelector('#height_input');
+ const guzik = document.querySelector('#guzik');
 
-// alert(guzik.value);
+// alert(waga.value);
 
-function test() {
-	alert('test: ' + guzik.value);
+function licz_bmi() {
+	let weight = waga.value;
+	let height = wzrost.value;
+	let bmi = weight / ( height * height );
+	// alert(`twoje BMI to: ${bmi}`);
+	alert( bmi );
 }
-guzik.addEventListener('click', test);
+guzik.addEventListener('click', licz_bmi);
