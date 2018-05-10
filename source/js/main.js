@@ -16,14 +16,20 @@ robotron.sayName(); //My name is Robotron
  const guzik = document.querySelector('#guzik');
  const hand = document.querySelector('#hand');
 
- const skala = {
+ var skala = {
 	 s1: {
 		 bmi_min: 0,
-		 bmi_max: 18.5
+		 bmi_max: 18.5,
+		 deg_min: 17,
+		 deg_max: 62
+	 },
+	 s2: {
+		 bmi_min: 18.5,
+		 bmi_max: 22.9,
+		 deg_min: 65,
+		 deg_max: 105
 	 }
  }
-
-// alert(waga.value);
 
 function licz_bmi() {
 	let weight = waga.value;
@@ -34,6 +40,7 @@ function licz_bmi() {
 	var deg_max;
 	var deg_0;
 	var deg;
+	var type;
 
 	let max_bmi = 45;
 
@@ -41,21 +48,28 @@ function licz_bmi() {
 
 	// let deg = bmi/max_bmi * 360
 	// alert(`twoje BMI to: ${bmi}`);
-
-	if ( bmi >= skala.s1.min && bmi < skala.s1.max ) {			// 0 - 18.5
-		deg_min = 17;
-		deg_max = 62;
-		deg = (bmi / 18.5) * (deg_max - deg_min);
+	// type = 's1';
+	if ( bmi >= skala.s1.bmi_min && bmi < skala.s1.bmi_max ) {			// 0 - 18.5
+		alert('skala1');
+		type = 's1';
 	} else
-	if ( bmi < 22.9 ){						// 18.5 - 22.9
-		deg_min = 65;
-		deg_max = 105;
-		deg = (bmi - 18.5)/(22.9 - 18.5) * (deg_max - deg_min);
+	if ( bmi < skala.s2.bmi_max ){										// 18.5 - 22.9
+		type = 's2';
 	}
-	// alert( bmi );\
-	// let deg = 90;
-	hand.style.transform = `rotate(${deg_min + deg}deg)`;
+
+	alert( type );
+
+
+	// deg_min = 65;
+	// deg_max = 105;
+	bmi_min = skala[type].bmi_min;
+	bmi_max = skala[type].bmi.max;
+	deg_min = skala[type].deg_min;
+	deg_max = skala[type].deg_max;
+	deg = (bmi - bmi_min)/(bmi_max - bmi_min) * (deg_max - deg_min);
+	hand.style.transform = `rotate($ deg}deg)`;
 }
  // hand.style.transform = "rotate(60deg)"
 
 guzik.addEventListener('click', licz_bmi);
+waga.addEventListener('change', licz_bmi);
