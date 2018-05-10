@@ -9,7 +9,17 @@ const concat = require('gulp-concat');
 const htmlReplace = require('gulp-html-replace');
 const htmlMin = require('gulp-htmlmin');
 
+
+const browserify = require('gulp-browserify');
+// const babel = require('gulp-babel');
+// var browserify = require('browserify');
+// var babelify = require('babelify');
+// var source = require('vinyl-source-stream');
+
 const paths = {
+	src: "source",
+	dist: "dist",
+
 	styles: {
 		src: 'source/scss/**/*.scss',
 		css: 'source/css/',
@@ -20,8 +30,20 @@ const paths = {
 	html: {
 		src: 'source/*.html',
 		dest: 'dist/'
+	},
+
+	js: {
+		src: 'source/**/*.js',
+		dest: 'dist/'
 	}
 };
+
+gulp.task('tsk_js', function() {
+    // Single entry point to browserify
+    gulp.src(paths.js.src)
+    .pipe(browserify()) //{ insertGlobals : true }
+    .pipe(gulp.dest(paths.js.dest))
+});
 
 
 gulp.task('tsk_serve', ['tsk_html'], function() {
@@ -47,13 +69,12 @@ gulp.task('tsk_html', function() {
 			collapseWhitespace: true				// minifikacja html
 		}))
 		.pipe(gulp.dest(paths.html.dest))
-		.pipe(browserSync.stream());
 });
 
 // konfiguracja preprocesora Sass + sourcemaps + autoprefixer
 gulp.task('tsk_sass', function() {
 	console.log("-> run tsk_sass");
-	gulp.src(paths.styles.src)			// ładuje do streama folder wejściowy
+	return gulp.src(paths.styles.src)			// ładuje do streama folder wejściowy
 
 		.pipe(sourcemaps.init())					// inicjalizacja sourcemaps
 		.pipe(sass().on('error', sass.logError))	// kompilowanie z obsługa błędów
@@ -70,6 +91,34 @@ gulp.task('tsk_sass', function() {
 		// gulp.run('tsk_css');
 });
 
+
+gulp.task('tsk_copy', function() {
+
+	return gulp.src('source/fonts').pipe(gulp.dest('dist/fonts')); // kopiowanie czcionek
+
+});
+
+// gulp.task('tsk_js', () =>
+// 	gulp.src(paths.js.src)
+// 	//.pipe(sourcemaps.init())
+// 	//.
+// 	// return browserify
+// 	.pipe(browserify())
+// 	// .pipe(babel({
+// 	// 	presets: [['env', {
+// 	// 		"targets": {
+// 	// 			"chrome": "66",
+// 	// 			"firefox": "60"
+// 	// 		}
+// 	// 	}]]
+// 	// }))
+//
+// 	// .pipe(concat('all.js'))
+// 	//.pipe(sourcemaps.write('.'))
+// 	.pipe(gulp.dest(paths.js.dest))
+// );
+
+
 	// Obrobka skompilowanych plikow css
 	// gulp.task('tsk_css', function() {
 	// 	console.log('uruchomiono: tsk_css')
@@ -79,40 +128,9 @@ gulp.task('tsk_sass', function() {
 	// 		.pipe(gulp.dest(paths.styles.dest));
 	// });
 
-
-
-
 gulp.watch(paths.html.src, ['tsk_html']);
+gulp.watch(paths.js.src, ['tsk_js']);
 gulp.watch(paths.styles.src, ['tsk_sass']);
 
-// var sass = require('gulp-sass');				// załadowanie sass'a
-// var sourcemaps = require('gulp-sourcemaps');
-// var autoprefixer = require('gulp-autoprefixer');
 
-// zadanie przeladowujace strone
-// gulp.task('reload', function() {				// 4. zadanie reload
-// 	browserSync.reload();						// pełne przeładowanie okna przeglądarki
-// })
-//
-// // konfiguracja browser-synca
-// gulp.task('serve', ['sass'], function() {		// 2. tworzenie zadania 'serve'
-// 	browserSync({
-// 		server: 'src', 							// uruchomienie lokalnego serwera ze źródłem plików ./src
-// 		// proxy: '127.0.0.1:80',				// tworzenie proxy do strony na serwerze
-// 		// ws: true								// poszukać co to jest!?
-// 	});
-// 	gulp.watch('src/*.html', ['reload']);		// 3. nasłuch na zmianę html w folderze src
-// 	gulp.watch('src/scss/**/*.scss', ['sass']);	// +  nasłuch na zaminę plików scss
-// });
-//
-// // konfiguracja preprocesora Sass
-// gulp.task('sass', function() {
-// 	return gulp.src('src/scss/**/*.scss')			// folder z plikami scss
-// 		.pipe(sourcemaps.init())					// inicjalizacja sourcemaps
-// 		.pipe(sass().on('error', sass.logError))	// kompilowanie z obsługa błędów
-// 		.pipe(sourcemaps.write())					// zapis sourcemapy do pliku
-// 		.pipe(gulp.dest('src/css'))					// folder wyjsciowy
-// 		.pipe(browserSync.stream())					// wstrzyknięcie zmian?
-// });
-
-gulp.task('default', ['tsk_serve', 'tsk_sass']);				// 5. chcemy zeby naszym domyślnym zadaniem było zadanie o nazwie 'serve'
+gulp.task('default', ['tsk_serve', 'tsk_sass', 'tsk_js', 'tsk_copy']);				// 5. chcemy zeby naszym domyślnym zadaniem było zadanie o nazwie 'serve'
