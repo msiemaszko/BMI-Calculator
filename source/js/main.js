@@ -19,45 +19,27 @@ robotron.sayName(); //My name is Robotron
  var skala = {
 	 s1: {
 		 bmi_min: 0,
-		 bmi_max: 18.5,
-		 deg_min: 17,
-		 deg_max: 62
+		 bmi_max: 24.9,
+		 deg_min: 5,
+		 deg_max: 45
 	 },
 	 s2: {
-		 bmi_min: 18.5,
-		 bmi_max: 22.9,
-		 deg_min: 65,
-		 deg_max: 105
-	 },
-	 s3: {
-		 bmi_min: 23,
-		 bmi_max: 24.9,
-		 deg_min: 109,
-		 deg_max: 162
-	 },
-	 s4: {
 		 bmi_min: 25,
 		 bmi_max: 29.9,
-		 deg_min: 167,
-		 deg_max: 212
+		 deg_min: 45,
+		 deg_max: 90
 	 },
-	 s5: {
+	 s3: {
 		 bmi_min: 30,
-		 bmi_max: 34.9,
-		 deg_min: 217,
-		 deg_max: 286
-	 },
-	 s6: {
-		 bmi_min: 35,
 		 bmi_max: 39.9,
-		 deg_min: 272,
-		 deg_max: 325
+		 deg_min: 90,
+		 deg_max: 135
 	 },
-	 s7: {
+	 s4: {
 		 bmi_min: 40,
 		 bmi_max: 45,
-		 deg_min: 328,
-		 deg_max: 372
+		 deg_min: 135,
+		 deg_max: 177
 	 }
  }
 
@@ -75,6 +57,8 @@ function licz_bmi() {
 	let height = wzrost.value / 100;
 	let bmi = Math.min( 45, weight / ( height * height ));
 
+	// deg = (bmi/45) * 180;
+
 	if ( bmi >= skala.s1.bmi_min && bmi <= skala.s1.bmi_max ) {			// 0 - 18.5
 		oo = skala.s1;
 	} else
@@ -83,18 +67,8 @@ function licz_bmi() {
 	} else
 	if ( bmi <= skala.s3.bmi_max ){										// 23 - 24.9
 		oo = skala.s3;
-	} else
-	if ( bmi <= skala.s4.bmi_max ){										// 25 - 29.9
+	} else {																// 40 - infinity
 		oo = skala.s4;
-	} else
-	if ( bmi <= skala.s5.bmi_max ){										// 30 - 34.9
-		oo = skala.s5;
-	} else
-	if ( bmi <= skala.s6.bmi_max ){									// 35 - 39.9
-		oo = skala.s6;
-	} else
-	{																// 40 - infinity
-		oo = skala.s7;
 	}
 
 	bmi_min = oo.bmi_min;

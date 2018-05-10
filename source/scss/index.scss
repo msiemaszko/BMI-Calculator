@@ -40,15 +40,16 @@ text-align: center;
 
 .BMI {
 	grid-column: 1/4;
-	width: 35rem;
-	height: 23rem;
+	border: 1px solid black;
+	width: 41rem;
+	height: 27rem;
 	position: relative;
 	// border: 20px solid green;
 	// border-radius: 50%;
 	margin: 1em auto;
 	//padding: 2rem;
 	//
-	background: url(../img/BMIFinal.png) center -20px  no-repeat;
+	background: url(../img/BMI.png) center no-repeat;
 
 }
 
@@ -60,18 +61,21 @@ text-align: center;
 }
 
 .hand {
-	visibility: hidden;
-	width: 50%;
-	height: 1px;
-	background: blue;
+	//visibility: hidden;
+	left: 10%;
+	width: 40%;
+	height: 15px;
+	background: rgba(65,65,65,0.9);
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+
+	border:1px solid red;
+	border-right: 0px;
+
 	position: absolute;
-	top: 50%;
+	top: 78%;
 	transform-origin: 100%;
 
-		&:hover {
-			transform: rotate(90deg);
-			transition: all 5s;
-
-			transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-		}
+	transition: all 3s;
+	transition-timing-function: cubic-bezier(0.3, 1.7, 0.58, 1);
 }
