@@ -11,12 +11,12 @@ robotron.sayName(); //My name is Robotron
 
  // ===============================
 
- const waga = document.querySelector('#weight_input');
- const wzrost = document.querySelector('#height_input');
- const guzik = document.querySelector('#guzik');
- const hand = document.querySelector('#hand');
+const waga = document.querySelector('#weight_input');
+const wzrost = document.querySelector('#height_input');
+// const guzik = document.querySelector('#guzik');
+const hand = document.querySelector('#hand');
 
- var skala = {
+var skala = {
 	 s1: {
 		 bmi_min: 0,
 		 bmi_max: 24.9,
@@ -43,21 +43,16 @@ robotron.sayName(); //My name is Robotron
 	 }
  }
 
- var bmi_min;
- var bmi_max;
- var deg_min;
- var deg_max;
- var deg;
- let max_bmi = 45;
- var oo = skala.s1;
+var max_bmi = 45;
+var oo = skala.s1;
 
 
 function licz_bmi() {
+	if (waga.value == "" || wzrost.value == "" ) return;
+
 	let weight = waga.value;
 	let height = wzrost.value / 100;
-	let bmi = Math.min( 45, weight / ( height * height ));
-
-	// deg = (bmi/45) * 180;
+	let bmi = Math.min( max_bmi, weight / ( height * height ));
 
 	if ( bmi >= skala.s1.bmi_min && bmi <= skala.s1.bmi_max ) {			// 0 - 18.5
 		oo = skala.s1;
@@ -71,14 +66,15 @@ function licz_bmi() {
 		oo = skala.s4;
 	}
 
-	bmi_min = oo.bmi_min;
-	bmi_max = oo.bmi_max;
-	deg_min = oo.deg_min;
-	deg_max = oo.deg_max;
-	deg = deg_min + (bmi - bmi_min)/(bmi_max - bmi_min) * (deg_max - deg_min);
+	let bmi_min = oo.bmi_min;
+	let bmi_max = oo.bmi_max;
+	let deg_min = oo.deg_min;
+	let deg_max = oo.deg_max;
+	let deg = deg_min + (bmi - bmi_min)/(bmi_max - bmi_min) * (deg_max - deg_min);
 	hand.style.visibility = 'visible';
 	hand.style.transform = `rotate(${deg}deg)`;
 }
 
-guzik.addEventListener('click', licz_bmi);
+// guzik.addEventListener('click', licz_bmi);
 waga.addEventListener('change', licz_bmi);
+wzrost.addEventListener('change', licz_bmi);
