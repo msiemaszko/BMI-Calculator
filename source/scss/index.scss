@@ -1,11 +1,72 @@
 
-body {
-	background-color: red;
+html {
+	background-color: blue;
+	color: green;
+
+	font-family: 'BubblegumSans';
+	font-family: Shrikhand;
+	font-size: 30px;
 }
 
-main {
-	color: white;
+body {
+	margin: 0 auto;
+	background-color: white;
+	display: flex;
+	flex:1;
+	min-height: 100vh;
+	//align-items: center;
+	justify-content: center;
+}
 
-	font-family: 'Shrikhand';
-	font-size: 30px;
+.container {
+	width: 100%;
+	height: 100vh;
+	background-color: lightgrey;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-gap: 1em;
+}
+.box {
+background-color: white;
+text-align: center;
+
+}
+
+.weight {
+
+}
+
+.BMI {
+	grid-column: 1/4;
+	width: 11rem;
+	height: 11rem;
+	position: relative;
+	border: 20px solid green;
+	border-radius: 50%;
+	margin: 1em auto;
+	//padding: 2rem;
+
+}
+
+.face {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform: translateY(-3px);
+}
+
+.hand {
+	width: 50%;
+	height: 5px;
+	background: black;
+	position: absolute;
+	top: 50%;
+	transform-origin: 100%;
+		&:hover {
+	transform: rotate(90deg);
+	transition: all 5s;
+
+	transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
 }
