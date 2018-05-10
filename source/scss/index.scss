@@ -40,13 +40,15 @@ text-align: center;
 
 .BMI {
 	grid-column: 1/4;
-	width: 11rem;
-	height: 11rem;
+	width: 35rem;
+	height: 23rem;
 	position: relative;
-	border: 20px solid green;
-	border-radius: 50%;
+	// border: 20px solid green;
+	// border-radius: 50%;
 	margin: 1em auto;
 	//padding: 2rem;
+	//
+	background: url(../img/BMIFinal.png) center -20px  no-repeat;
 
 }
 
@@ -59,7 +61,7 @@ text-align: center;
 
 .hand {
 	width: 50%;
-	height: 5px;
+	height: 1px;
 	background: blue;
 	position: absolute;
 	top: 50%;
