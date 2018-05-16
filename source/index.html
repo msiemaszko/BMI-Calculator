@@ -1,12 +1,45 @@
 <!DOCTYPE html>
-<html lang="pl" dir="ltr">
+<html lang="pl">
 	<head>
 		<title>GulpForDinosaur Projekt</title>
 		<meta charset="utf-8">
-		<script src="js/index.js"></script>
-		<link rel="stylesheet" href="/styles/styles.css">
+		<link rel="stylesheet" href="/styles/main.css">
 	</head>
 	<body>
-		Hello World
+		<div class="container">
+
+			<div class="box data_box weight">
+	  			<input type="text" id="weight_input" placeholder="KG">
+			</div>
+
+			<div class="box data_box height">
+	  			<input type="text" id="height_input" placeholder="CM">
+			</div>
+
+			<div class="box data_box name">
+				<input type="text" id="name_input" placeholder="Imie">
+			</div>
+
+			<div class="box my_scores">
+				<table>
+					<thead>
+						<tr><th colspan="3">Wyniki</th></tr>
+						<tr><td>Imie</td><td>BMI</td><td></td><tr>
+					</thead>
+					<tbody id="scores_list"></tbody>
+				</table>
+			</div>
+			<div class="result">
+				<span>Twoje BMI: &nbsp;<span id="score_val">37.8</span></span>
+				<input type="submit" id="btn_zapisz" value="Zapisz wynik">
+			</div>
+			<div class="box BMI" id="BMI">
+				<div class="face" id="face">
+					<div class="hand" id="hand"></div>
+				</div>
+			</div>
+		</div>
 	</body>
+	</html>
+	<script src="js/bundle.js"></script>
 </html>

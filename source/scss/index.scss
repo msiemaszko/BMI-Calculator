@@ -1,9 +1,169 @@
+* {
+	margin: 0px;
+	&:focus {
+		outline: none;
+	}
+}
 
 body {
-	background-color: red;
-	color: white;
+	display: flex;
+	justify-content: center;
+	// flex:1;
 
-	font-family: 'BubblegumSans';
+	background-color: lightgrey;
+	color: #3d3d3d;
+	overflow: hidden;
+	margin: 0 auto;
+	min-height: 100vh;
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin: 0.5em;
+	grid-gap: 0.5em;
+
 	font-family: Shrikhand;
+	font-family: 'BubblegumSans';
 	font-size: 30px;
+}
+.box {
+	background-color: white;
+	text-align: center;
+}
+
+.data_box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.box input, .name input, .result input {
+	background: rgba(0,0,0,0.03);
+	border: 2px solid grey;
+	border-radius: 100px;
+	text-align: center;
+	font-family: 'Lato';
+	font-size: 1.5em;
+	width: 2em;
+	height: 2em;
+	margin: 5px;
+	padding: 5px;
+	transition-duration: 0.4s;
+
+	&:hover, &:focus {
+		background: rgba(0,0,0,0.15)
+	}
+}
+
+.name input {
+	font-size: 0.7em;
+	width: 80%;
+	border-radius: 10px;
+}
+
+.weight {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+.height {
+
+}
+
+.my_scores {
+	padding-top: 1em;
+	grid-column: 4;
+	grid-row: 1/4;
+	margin-bottom: 1.2em;
+
+	display: flex;
+	justify-content: center;
+
+	table {
+		border-collapse: collapse;
+
+		td {
+			padding: 0.4em;
+		}
+
+		thead td {
+				border-bottom: 1px solid gray;
+		}
+		tr {
+			td {
+				font-size: 0.6em;
+				font-family: 'Lato';
+			}
+		}
+	}
+
+	img {
+		cursor: pointer;
+		vertical-align: middle;
+	}
+}
+
+.result {
+	grid-column: 1/4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// justify-content: space-around;
+	background-color: white;
+	visibility: hidden;
+	z-index: 1;
+
+	input {
+		border-radius: 3px;
+		margin: 10px 0px 10px 50px;
+		font-size: 14px;
+		height: 35px;
+		width: 25%;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+.BMI {
+	grid-column: 1/4;
+	width: 41rem;
+	height: 27rem;
+	position: relative;
+	margin: 0.1em auto;
+	background: url(../img/BMI.png) center no-repeat;
+
+}
+
+.face {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform: translateY(-3px);
+}
+
+.hand {
+	visibility: hidden;
+	left: 10%;
+	width: 40%;
+	height: 15px;
+	background: rgba(65,65,65,0.9);
+	border-top-left-radius: 100px;
+	border-bottom-left-radius: 100px;
+
+	// border:1px solid white;
+	// border-right: 0px;
+	box-shadow: 0px 0px 10px #bababa;
+
+	position: absolute;
+	top: 78%;
+	transform-origin: 100%;
+
+	transition: all 3s;
+	transition-timing-function: cubic-bezier(0.3, 1.7, 0.58, 1);
 }

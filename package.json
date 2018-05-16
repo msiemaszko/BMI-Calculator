@@ -1,12 +1,12 @@
 {
-  "name": "02_portfolio",
+  "name": "GulpForDinosaur",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Marek Siemaszko, Janusz Schonrock",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -16,8 +16,6 @@
     "browserify": "^16.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
-    "gulp-babel": "^7.0.1",
-    "gulp-browserify": "^0.5.1",
     "gulp-clean-css": "^3.9.3",
     "gulp-concat": "^2.6.1",
     "gulp-html-replace": "^1.6.2",
@@ -26,9 +24,10 @@
     "gulp-sourcemaps": "^2.6.4",
     "vinyl-source-stream": "^2.0.0"
   },
-  "dependencies": {},
-
-  "browserify": {
-  	"transform": [["babelify", { "presets": ["env"] }]]
-	}
+  "dependencies": {
+    "gulp-changed": "^3.2.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-uglify": "^3.0.0",
+    "vinyl-buffer": "^1.0.1"
+  }
 }
